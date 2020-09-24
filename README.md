@@ -1,1 +1,0 @@
-# skoly_web
