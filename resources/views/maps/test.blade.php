@@ -18,6 +18,9 @@ function initMap() {
 
     // Arrays
     var skoly = {!! $skoly !!};
+    console.log(@json($skoly));
+    console.log(skoly);
+    console.log(@json($skoly).find(x => x.id == 2)==skoly.find(x=>x.id==2));
     var myMarkers = [];
     var myInfoWindows = [];
 
@@ -72,7 +75,7 @@ function initMap() {
 * The callback parameter executes the initMap() function
 -->
 <script defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA66vvPxX8nxIZLUu9ZXdb-XHnZaZwWBjc&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
 </script>
 
 @endsection
