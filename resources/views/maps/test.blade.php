@@ -16,56 +16,52 @@
 // Initialize and add the map
 function initMap() {
 
-    // Arrays
-    var skoly = {!! $skoly !!};
-    console.log(@json($skoly));
-    console.log(skoly);
-    console.log(@json($skoly).find(x => x.id == 2)==skoly.find(x=>x.id==2));
-    var myMarkers = [];
-    var myInfoWindows = [];
+    var options = {
+        zoom: 9,
+        center: {
+            lat: 49.139728,
+            lng: 17.213939
+        }
+    }
 
-    // The location of first school
-    var first_school = { lat: 49.139728, lng: 17.213939 }
-    // The map, centered at first school
+    // The map
     var map = new google.maps.Map(
-    document.getElementById('map'), {zoom: 9, center: first_school});
+    document.getElementById('map'), {zoom: 9, options});
 
     // Inserting markers
-    skoly.forEach(element => {
-        var position = {lat: element.lat, lng: element.lng}
-        myMarkers.push(new google.maps.Marker({
-            id: element.id,
-            position: position,
-            map: map,
-            title: element.nazev,
-        }));
-
-        
-    });
-    // Inserting info windows
-    myMarkers.forEach(element => {
-        var contentString = '<div>'
-        + 'Název školy je: '
-        + element.title
-        + '</br>'
-        + 'Škola se nachází ve městě: '
-        + 'TODO :('
-        + '</div>';
-
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
+    @foreach($skoly as $skola)
+        addMarker({
+            coords:{
+                lat: {{ $skola->lat }},
+                lng: {{ $skola->lng }}
+            },
+            content: '<div>'
+                    + 'Název školy je: '
+                    + "{{ trim($skola->nazev) }}"
+                    + '</br>'
+                    + 'Škola se nachází ve městě: '
+                    + "{{ trim($skola->mestoNazev->nazev) }}"
+                    + '</div>'
         });
+    @endforeach
 
-        myInfoWindows.push(infowindow);
-
-        element.addListener('click', function() {
-            for (var i = 0; i < myInfoWindows.length; i++ ) { 
-                myInfoWindows[i].close();
-            }
-            infowindow.open(map, element);
+    // add marker function
+    function addMarker(props)
+    {
+        var marker = new google.maps.Marker({
+            position:props.coords,
+            map:map
         });
-        
-    });
+        if(props.content)
+        {
+            var infoWindow = new google.maps.InfoWindow({
+            content: props.content
+        });
+            marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+        }); 
+        }
+    }
 }
 
 </script>
@@ -75,7 +71,7 @@ function initMap() {
 * The callback parameter executes the initMap() function
 -->
 <script defer
-src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key= {{ config('services.google.key') }} &callback=initMap">
 </script>
 
 @endsection
