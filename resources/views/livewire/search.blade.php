@@ -11,17 +11,17 @@
                                         <path d="M8.11086 15.2217C12.0381 15.2217 15.2217 12.0381 15.2217 8.11086C15.2217 4.18364 12.0381 1 8.11086 1C4.18364 1 1 4.18364 1 8.11086C1 12.0381 4.18364 15.2217 8.11086 15.2217Z" stroke="#455A64" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M16.9993 16.9993L13.1328 13.1328" stroke="#455A64" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                    <input id="search" placeholder="Název" class="py-1 bg-blue-100  px-2 my-1 leading-normal appearance-none placeholder-black" wire:model='searchTerm' type="text">
+                                    <input id="search" placeholder="Název" class="py-1 bg-indigo-100  px-2 my-1 leading-normal appearance-none placeholder-black" wire:model='searchTerm' type="text">
                                 </span>
                             </div>
                         </div>
                     </th>
-                    <th class=" align-bottom py-1 px-8 border-gray-300 text-left text-sm leading-4 text-black-700 tracking-wider w-2/5">Město</th>
+                    <th class="py-1 px-8 border-gray-300 text-left text-sm leading-4 text-black-700 tracking-wider w-2/5">Město</th>
                 </tr>
             </thead>
             <tbody> 
                 @foreach ($skoly as $skola)
-                    <tr class="border-b border-t">
+                    <tr class="border-t my-8">
                         <td class="px-4 py-2">{{$skola->nazev}}</td>
                         <td class="px-4 py-2">{{$skola->mestoNazev->nazev}}</td>
                     </tr>

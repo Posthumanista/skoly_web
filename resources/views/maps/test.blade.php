@@ -52,14 +52,17 @@ function initMap() {
             position:props.coords,
             map:map
         });
-        if(props.content)
-        {
+        
+        if(props.content){
             var infoWindow = new google.maps.InfoWindow({
-            content: props.content
-        });
+                content: props.content
+            });
             marker.addListener('click', function(){
-            infoWindow.open(map, marker);
-        }); 
+                infoWindow.open(map, marker);
+            });
+            google.maps.event.addListener(map, "click", function(event) {
+                infoWindow.close();
+            });
         }
     }
 }
