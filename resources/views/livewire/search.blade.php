@@ -28,5 +28,11 @@
                 @endforeach
             </tbody>
         </table>    
+        <select id="select" multiple wire:model="species">
+            <option value="Carp">Carp</option>
+            <option value="Trout">Trout</option>
+            <option value="Pike">Pike</option>
+            <option value="Catfish">Catfish</option>
+        </select>
     </div>
 </div>

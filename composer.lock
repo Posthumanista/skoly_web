@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13fc52280433c34ea02e5c9573f8ce91",
+    "content-hash": "c95b605a211e77bf08fd3dbcd314d81a",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -1509,6 +1509,46 @@
                 "schema"
             ],
             "time": "2020-05-27T16:41:55+00:00"
+        },
+        {
+            "name": "laracademy/interactive-make",
+            "version": "1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracademy/interactive-make.git",
+                "reference": "39eb835386d01314273a6d251c9ba8a69abc6172"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracademy/interactive-make/zipball/39eb835386d01314273a6d251c9ba8a69abc6172",
+                "reference": "39eb835386d01314273a6d251c9ba8a69abc6172",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracademy\\Commands\\MakeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laracademy\\Commands\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael McMullen",
+                    "email": "packages@laracademy.co"
+                }
+            ],
+            "description": "Interactive make CLI replacement for Laravel",
+            "time": "2020-05-08T17:03:47+00:00"
         },
         {
             "name": "larapack/doctrine-support",

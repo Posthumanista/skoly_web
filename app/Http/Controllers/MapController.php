@@ -10,7 +10,7 @@ class MapController extends Controller
     public function index()
     {
         $skoly = Skola::all();
-        return view('maps.test')->with('skoly', $skoly);
+        return view('maps.leaflet')->with('skoly', $skoly);
 
     }
 }

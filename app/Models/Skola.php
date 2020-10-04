@@ -27,4 +27,9 @@ class Skola extends Model
     {
         return $this->hasOne('App\Models\Mesto', 'id', 'mesto');
     }
+    
+    public function pocetPrijatych()
+    {
+        return $this->belongsTo('App\Models\PocetPrijatych', 'id', 'skola');
+    }
 }
